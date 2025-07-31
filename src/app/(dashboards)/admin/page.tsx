@@ -1,5 +1,5 @@
 import AttendanceChart from "@/components/AttendanceChart";
-import DateCalendar from "@/components/DateCalendar";
+import CalendarWithEvents from "@/components/CalendarWithEvents";
 import FinanceChart from "@/components/FinanceChart";
 import StudentsCountChart from "@/components/StudentsCountChart";
 import UserCard from "@/components/UserCard";
@@ -30,7 +30,7 @@ function AdminDashboard() {
       </div>
       {/* additional left */}
       <div className="lg:w-1/3 md:w-full bg-white h-fit p-4 rounded-2xl">
-        <DateCalendar />
+        <CalendarWithEvents />
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 ("");
 
+import { userRole } from "@/lib/lib";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -124,22 +125,25 @@ function MenuNavBar() {
       {menuItems.map((el, i) => (
         <div key={i} className="flex flex-col">
           <h4 className="my-[10px]  text-gray-400">{el.title}</h4>
-          {el.items.map((item, index) => (
-            <div key={index} className="">
-              <Link
-                href={item.href}
-                className="flex items-center justify-center lg:justify-start gap-4 text-gray-500 py-2 md:px-2 rounded-md hover:bg-[#C3EBFA]"
-              >
-                <Image
-                  src={item.icon}
-                  width={20}
-                  height={20}
-                  alt={item.label}
-                ></Image>
-                <span className=" hidden lg:block">{item.label}</span>
-              </Link>
-            </div>
-          ))}
+          {el.items.map((item, index) => {
+            if (item.visible.includes(userRole))
+              return (
+                <div key={index} className="">
+                  <Link
+                    href={item.href}
+                    className="flex items-center justify-center lg:justify-start gap-4 text-gray-500 py-2 md:px-2 rounded-md hover:bg-[#C3EBFA]"
+                  >
+                    <Image
+                      src={item.icon}
+                      width={20}
+                      height={20}
+                      alt={item.label}
+                    ></Image>
+                    <span className=" hidden lg:block">{item.label}</span>
+                  </Link>
+                </div>
+              );
+          })}
         </div>
       ))}
     </div>
